@@ -1,12 +1,20 @@
 import React from 'react';
 import ListItem from './ListItem';
 
-const FilesList = ({ files }) => {
+const FilesList = ({ files, isSearchView, counter }) => {
   return (
     <div className="list">
       {files.length > 0 ? (
         files.map((file, index) => {
-          return <ListItem key={file.id} {...file} />;
+          return (
+            <ListItem
+              key={file.id}
+              {...file}
+              index={index}
+              isSearchView={isSearchView}
+              counter={counter}
+            />
+          );
         })
       ) : (
         <div>

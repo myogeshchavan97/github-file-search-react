@@ -2,13 +2,20 @@ import React from 'react';
 import Header from './components/Header';
 import FilesList from './components/FilesList';
 import SearchView from './components/SearchView';
-import { ESCAPE_CODE, HOTKEY_CODE } from './utils/keyCodes';
+import {
+  ESCAPE_CODE,
+  HOTKEY_CODE,
+  UP_ARROW_CODE,
+  DOWN_ARROW_CODE
+} from './utils/keyCodes';
 import files from './utils/api';
+import InfoMessage from './components/InfoMessage';
 
 export default class App extends React.Component {
   state = {
     isSearchView: false,
-    filesList: files
+    filesList: files,
+    counter: 0
   };
 
   componentDidMount() {
@@ -20,6 +27,7 @@ export default class App extends React.Component {
   }
 
   handleEvent = (event) => {
+    const { filesList, counter } = this.state;
     const keyCode = event.keyCode || event.which;
 
     switch (keyCode) {
@@ -31,6 +39,16 @@ export default class App extends React.Component {
         break;
       case ESCAPE_CODE:
         this.setState({ isSearchView: false, filesList: files });
+        break;
+      case UP_ARROW_CODE:
+        if (counter > 0) {
+          this.setState({ counter: counter - 1 });
+        }
+        break;
+      case DOWN_ARROW_CODE:
+        if (counter < filesList.length - 1) {
+          this.setState({ counter: counter + 1 });
+        }
         break;
       default:
         break;
@@ -50,12 +68,13 @@ export default class App extends React.Component {
     }
 
     this.setState({
-      filesList: list
+      filesList: list,
+      counter: 0
     });
   };
 
   render() {
-    const { isSearchView, filesList } = this.state;
+    const { isSearchView, counter, filesList } = this.state;
 
     return (
       <div className="container">
@@ -63,7 +82,12 @@ export default class App extends React.Component {
         {isSearchView ? (
           <div className="search-view">
             <SearchView onSearch={this.handleSearch} />
-            <FilesList files={filesList} isSearchView={isSearchView} />
+            <InfoMessage />
+            <FilesList
+              files={filesList}
+              isSearchView={isSearchView}
+              counter={counter}
+            />
           </div>
         ) : (
           <FilesList files={filesList} />
