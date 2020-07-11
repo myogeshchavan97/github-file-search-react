@@ -1,5 +1,6 @@
 import React from 'react';
 import ListItem from './ListItem';
+import PropTypes from 'prop-types';
 
 const FilesList = ({ files, isSearchView, counter }) => {
   return (
@@ -23,6 +24,12 @@ const FilesList = ({ files, isSearchView, counter }) => {
       )}
     </div>
   );
+};
+
+FilesList.propTypes = {
+  files: PropTypes.array.isRequired,
+  isSearchView: PropTypes.bool,
+  counter: PropTypes.number
 };
 
 export default FilesList;

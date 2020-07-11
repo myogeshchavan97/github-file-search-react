@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import PropTypes from 'prop-types';
 
 const SearchView = ({ onSearch }) => {
   const [input, setInput] = useState('');
@@ -27,6 +28,10 @@ const SearchView = ({ onSearch }) => {
       />
     </div>
   );
+};
+
+SearchView.propTypes = {
+  onSearch: PropTypes.func.isRequired
 };
 
 export default SearchView;

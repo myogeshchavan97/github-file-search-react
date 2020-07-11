@@ -1,6 +1,7 @@
 import React from 'react';
 import moment from 'moment';
 import { AiFillFolder, AiOutlineFile, AiOutlineRight } from 'react-icons/ai';
+import PropTypes from 'prop-types';
 
 const ListItem = ({
   index,
@@ -47,6 +48,16 @@ const ListItem = ({
       </div>
     </React.Fragment>
   );
+};
+
+ListItem.propTypes = {
+  index: PropTypes.number.isRequired,
+  type: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  comment: PropTypes.string.isRequired,
+  modified_time: PropTypes.string.isRequired,
+  isSearchView: PropTypes.bool,
+  counter: PropTypes.number
 };
 
 export default ListItem;
