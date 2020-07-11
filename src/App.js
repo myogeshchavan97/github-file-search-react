@@ -58,11 +58,21 @@ export default class App extends React.Component {
   handleSearch = (searchTerm) => {
     let list;
     if (searchTerm) {
-      list = files.filter(
-        (file) =>
-          file.name.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1 &&
-          file.type === 'file'
-      );
+      const pattern = new RegExp(searchTerm, 'gi');
+      list = files
+        .filter(
+          (file) =>
+            file.name.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1 &&
+            file.type === 'file'
+        )
+        .map((file) => {
+          return {
+            ...file,
+            name: file.name.replace(pattern, (match) => {
+              return `<mark>${match}</mark>`;
+            })
+          };
+        });
     } else {
       list = files.filter((file) => file.type === 'file');
     }
