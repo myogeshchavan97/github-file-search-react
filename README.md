@@ -12,7 +12,9 @@ And access the application at http://localhost:3000/. <br />
 * To return to the file view, press `escape` key.<br />
 * You can change the hotkey from `t` to any other letter, inside `src/utils/keyCodes.js` file.
 
+Live Demo: https://github-file-search-react.netlify.app/
 
+![Application Demo](https://gist.github.com/myogeshchavan97/e0be7fc4c838544e2d00afeb3a82ae10/raw/e948a8f98f0c34224a5c0337337eed15b9ef4a1e/application.gif)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
