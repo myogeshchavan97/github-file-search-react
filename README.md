@@ -5,6 +5,15 @@ To run the project execute following commands in sequence
 2. yarn start
 ```
 
+And access the application at http://localhost:3000/. <br />
+
+* To switch to search view in the application, press `t` key on keyboard.
+* Then you can search for any file and navigate between the list of files using `up` and `down` arrow keys.
+* To return to the file view, press `escape` key.<br />
+* You can change the hotkey from `t` to any other letter, inside `src/utils/keyCodes.js` file.
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
